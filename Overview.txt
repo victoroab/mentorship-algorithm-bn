@@ -15,7 +15,6 @@ Brief
  1. Passord reset
  2. Email Notifications
 
-
 -Technologies
  1. React
  2. Typescript
