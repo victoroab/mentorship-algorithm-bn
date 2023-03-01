@@ -9,3 +9,102 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Mentor {
+  id           String               @id @default(uuid())
+  firstName    String
+  lastName     String
+  email        String               @unique
+  phoneNumber  String?
+  age          Int
+  gender       String
+  ethnicity    String
+  course       String
+  level        Int
+  matricNo     String
+  class        String
+  picture      String?
+  Mentee       Mentee[]
+  Preferences  MentorPreferences    @relation(fields: [preferenceId], references: [id])
+  preferenceId String               @unique
+  Skills       MentorSkills[]
+  Hobbies      MentorHobbies[]
+  Availability MentorAvailability[]
+}
+
+model Mentee {
+  id           String               @id @default(uuid())
+  firstName    String
+  lastName     String
+  email        String               @unique
+  phoneNumber  String?
+  age          Int
+  gender       String
+  ethnicity    String
+  course       String
+  level        Int
+  matricNo     String
+  class        String
+  mentor       Mentor               @relation(fields: [mentorId], references: [id])
+  mentorId     String
+  picture      String?
+  Skills       MenteeSkills[]
+  Hobbies      MenteeHobbies[]
+  Availability MenteeAvailability[]
+}
+
+model MentorPreferences {
+  id        String  @id @default(uuid())
+  gender    String
+  course    String
+  class     String
+  level     String
+  skills    String
+  hobbies   String
+  ethnicity String
+  mentor    Mentor?
+  // mentor    Mentor @relation(fields: [mentorId], references: [id])
+  // mentorId  String
+}
+
+model MentorSkills {
+  id       String @id @default(uuid())
+  skill    String
+  mentor   Mentor @relation(fields: [mentorId], references: [id])
+  mentorId String
+}
+
+model MenteeSkills {
+  id       String @id @default(uuid())
+  skill    String
+  mentee   Mentee @relation(fields: [menteeId], references: [id])
+  menteeId String
+}
+
+model MentorHobbies {
+  id       String @id @default(uuid())
+  hobbie   String
+  mentor   Mentor @relation(fields: [mentorId], references: [id])
+  mentorId String
+}
+
+model MenteeHobbies {
+  id       String @id @default(uuid())
+  hobbie   String
+  mentee   Mentee @relation(fields: [menteeId], references: [id])
+  menteeId String
+}
+
+model MentorAvailability {
+  id       String @id @default(uuid())
+  day      String
+  mentor   Mentor @relation(fields: [mentorId], references: [id])
+  mentorId String
+}
+
+model MenteeAvailability {
+  id       String @id @default(uuid())
+  day      String
+  mentee   Mentee @relation(fields: [menteeId], references: [id])
+  menteeId String
+}
