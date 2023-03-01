@@ -1,7 +1,7 @@
 import { prisma } from '../../config/prismaClient'
 import log from '../../config/logger'
 
-export const createUserService = async () => {
+export const createMentorService = async () => {
   try {
     const mentor = await prisma.mentor.create({
       data: {
