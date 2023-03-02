@@ -11,100 +11,108 @@ datasource db {
 }
 
 model Mentor {
-  id           String               @id @default(uuid())
-  firstName    String
-  lastName     String
-  email        String               @unique
-  phoneNumber  String?
-  age          Int
-  gender       String
-  ethnicity    String
-  course       String
-  level        Int
-  matricNo     String
-  class        String
-  picture      String?
-  Mentee       Mentee[]
-  Preferences  MentorPreferences    @relation(fields: [preferenceId], references: [id])
-  preferenceId String               @unique
-  Skills       MentorSkills[]
-  Hobbies      MentorHobbies[]
-  Availability MentorAvailability[]
+  id             String             @id @default(uuid())
+  firstName      String
+  lastName       String
+  email          String             @unique
+  phoneNumber    String?
+  age            Int
+  gender         String
+  ethnicity      String
+  course         String
+  level          Int
+  matricNo       String
+  class          String
+  picture        String?
+  Mentee         Mentee[]
+  Preferences    MentorPreferences  @relation(fields: [preferenceId], references: [id])
+  preferenceId   String             @unique
+  Skills         MentorSkills       @relation(fields: [skillsId], references: [id])
+  skillsId       String             @unique
+  Hobbies        MentorHobbies      @relation(fields: [hobbiesId], references: [id])
+  hobbiesId      String             @unique
+  Availability   MentorAvailability @relation(fields: [availabilityId], references: [id])
+  availabilityId String             @unique
+  Password       MentorPassword     @relation(fields: [passwordId], references: [id])
+  passwordId     String             @unique
 }
 
 model Mentee {
-  id           String               @id @default(uuid())
-  firstName    String
-  lastName     String
-  email        String               @unique
-  phoneNumber  String?
-  age          Int
-  gender       String
-  ethnicity    String
-  course       String
-  level        Int
-  matricNo     String
-  class        String
-  mentor       Mentor               @relation(fields: [mentorId], references: [id])
-  mentorId     String
-  picture      String?
-  Skills       MenteeSkills[]
-  Hobbies      MenteeHobbies[]
-  Availability MenteeAvailability[]
+  id             String             @id @default(uuid())
+  firstName      String
+  lastName       String
+  email          String             @unique
+  phoneNumber    String?
+  age            Int
+  gender         String
+  ethnicity      String
+  course         String
+  level          Int
+  matricNo       String
+  class          String
+  mentor         Mentor?            @relation(fields: [mentorId], references: [id])
+  mentorId       String?
+  picture        String?
+  Skills         MenteeSkills       @relation(fields: [skillsId], references: [id])
+  skillsId       String             @unique
+  Hobbies        MenteeHobbies      @relation(fields: [hobbiesId], references: [id])
+  hobbiesId      String             @unique
+  Availability   MenteeAvailability @relation(fields: [availabilityId], references: [id])
+  availabilityId String             @unique
+  Password       MenteePassword     @relation(fields: [passwordId], references: [id])
+  passwordId     String             @unique
 }
 
 model MentorPreferences {
-  id        String  @id @default(uuid())
-  gender    String
-  course    String
-  class     String
-  level     String
-  skills    String
-  hobbies   String
-  ethnicity String
-  mentor    Mentor?
-  // mentor    Mentor @relation(fields: [mentorId], references: [id])
-  // mentorId  String
+  id          String  @id @default(uuid())
+  preferences String
+  mentor      Mentor?
 }
 
 model MentorSkills {
-  id       String @id @default(uuid())
-  skill    String
-  mentor   Mentor @relation(fields: [mentorId], references: [id])
-  mentorId String
+  id     String  @id @default(uuid())
+  skills String
+  mentor Mentor?
 }
 
 model MenteeSkills {
-  id       String @id @default(uuid())
-  skill    String
-  mentee   Mentee @relation(fields: [menteeId], references: [id])
-  menteeId String
+  id     String  @id @default(uuid())
+  skills String
+  mentee Mentee?
 }
 
 model MentorHobbies {
-  id       String @id @default(uuid())
-  hobbie   String
-  mentor   Mentor @relation(fields: [mentorId], references: [id])
-  mentorId String
+  id      String  @id @default(uuid())
+  hobbies String
+  mentor  Mentor?
 }
 
 model MenteeHobbies {
-  id       String @id @default(uuid())
-  hobbie   String
-  mentee   Mentee @relation(fields: [menteeId], references: [id])
-  menteeId String
+  id      String  @id @default(uuid())
+  hobbies String
+  mentee  Mentee?
 }
 
 model MentorAvailability {
-  id       String @id @default(uuid())
-  day      String
-  mentor   Mentor @relation(fields: [mentorId], references: [id])
-  mentorId String
+  id     String  @id @default(uuid())
+  days   String
+  mentor Mentor?
 }
 
 model MenteeAvailability {
-  id       String @id @default(uuid())
-  day      String
-  mentee   Mentee @relation(fields: [menteeId], references: [id])
-  menteeId String
+  id     String  @id @default(uuid())
+  days   String
+  mentee Mentee?
+}
+
+model MentorPassword {
+  id       String  @id @default(uuid())
+  password String
+  mentor   Mentor?
+}
+
+model MenteePassword {
+  id       String  @id @default(uuid())
+  password String
+  mentee   Mentee?
 }

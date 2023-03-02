@@ -1,12 +1,16 @@
 import { Request, Response } from 'express'
 import { createMentorService } from '../../services/mentors/createMentorService'
+import { CreateMentorInput } from '../../schema/mentor/mentorSchema'
 import log from '../../config/logger'
 
-export const createMentorHandler = async (req: Request, res: Response) => {
-  // receive user inputs from request
+export const createMentorHandler = async (
+  req: Request<{}, {}, CreateMentorInput['body']>,
+  res: Response
+) => {
+  // receive user inputs from request body
   // call createMentorService
   try {
-    const mentor = await createMentorService()
+    const mentor = await createMentorService(req.body)
     res.json(mentor)
   } catch (e: any) {
     log.error(e)
