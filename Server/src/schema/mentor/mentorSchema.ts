@@ -6,6 +6,9 @@ export const createMentorSchema = z.object({
       firstName: z.string({
         required_error: 'first name is required',
       }),
+      middleName: z.string({
+        required_error: 'middle name is required',
+      }),
       lastName: z.string({
         required_error: 'last name is required',
       }),

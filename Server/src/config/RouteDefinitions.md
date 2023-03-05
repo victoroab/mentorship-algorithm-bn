@@ -9,9 +9,9 @@ const loginAsMentorRoute = '/api/auth/u/mentor'
 
 const loginAsMenteeRoute = '/api/auth/u/mentee'
 
-const acceptMentorRequestRoute = '/api/a/u/mentor/accept-request'
+const acceptMentorRequestRoute = '/api/a/u/mentee/:menteeId/accept-request'
 
-const sendMentorRequestRote = '/api/a/u/mentor/request-mentor'
+const sendMentorRequestRoute = '/api/a/u/mentor/:mentorId/request-mentor'
 
 const matchMentorRoute = '/api/a/s/create-match'
 ```
@@ -32,51 +32,6 @@ const getMenteeByIdRoute = '/api/u/view/mentees/:menteeId'
 
 ### DELETE Routes
 
-model Mentor {
-id String @id @default(uuid())
-firstName String
-lastName String
-email String @unique
-phoneNumber String?
-age Int
-gender String
-ethnicity String
-course String
-level Int
-matricNo String
-class String
-picture String?
-Mentee Mentee[]
-Preferences MentorPreferences @relation(fields: [preferenceId], references: [id])
-preferenceId String @unique
-Skills MentorSkills[]
-Hobbies MentorHobbies[]
-Availability MentorAvailability[]
-}
-
-model Mentee {
-id String @id @default(uuid())
-firstName String
-lastName String
-email String @unique
-phoneNumber String?
-age Int
-gender String
-ethnicity String
-course String
-level Int
-matricNo String
-class String
-mentor Mentor @relation(fields: [mentorId], references: [id])
-mentorId String
-picture String?
-Skills MenteeSkills[]
-Hobbies MenteeHobbies[]
-Availability MenteeAvailability[]
-}
-
-model MentorPreferences {
-id String @id @default(uuid())
 gender String
 course String
 class String
@@ -84,55 +39,26 @@ level String
 skills String
 hobbies String
 ethnicity String
-mentor Mentor?
-}
 
-model MentorSkills {
-id String @id @default(uuid())
-skill String
-mentor Mentor @relation(fields: [mentorId], references: [id])
-mentorId String
-}
+    // const assignMentor = await prisma.mentee.update({
+    //   where: { id: 'f86e52a1-0c20-4f1b-b2b5-ffa12583ee13' },
+    //   data: {
+    //     mentorId: '37fd398a-8401-4236-93e4-cf4e07689529',
+    //   },
+    // })
+    // return assignMentor
 
-model MenteeSkills {
-id String @id @default(uuid())
-skill String
-mentee Mentee @relation(fields: [menteeId], references: [id])
-menteeId String
-}
+    const deleteMentee = prisma.mentee.delete({
+      where: { id: '30ef675b-c128-404d-88cc-597d2a193a58' },
+    })
 
-model MentorHobbies {
-id String @id @default(uuid())
-hobbie String
-mentor Mentor @relation(fields: [mentorId], references: [id])
-mentorId String
-}
+    const deleteMenteeHobbies = prisma.menteeHobbies.delete({
+      where: { id: '7cb1a482-39e4-4582-883c-2b4d23b5aaa7' },
+    })
 
-model MenteeHobbies {
-id String @id @default(uuid())
-hobbie String
-mentee Mentee @relation(fields: [menteeId], references: [id])
-menteeId String
-}
+    const transaction = await prisma.$transaction([
+      deleteMentee,
+      deleteMenteeHobbies,
+    ])
 
-model MentorAvailability {
-id String @id @default(uuid())
-day String
-mentor Mentor @relation(fields: [mentorId], references: [id])
-mentorId String
-}
-
-model MenteeAvailability {
-id String @id @default(uuid())
-day String
-mentee Mentee @relation(fields: [menteeId], references: [id])
-menteeId String
-}
-
-gender String
-course String
-class String
-level String
-skills String
-hobbies String
-ethnicity String
+    return transaction

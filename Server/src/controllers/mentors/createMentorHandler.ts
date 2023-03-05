@@ -12,8 +12,8 @@ export const createMentorHandler = async (
   try {
     const mentor = await createMentorService(req.body)
     res.json(mentor)
-  } catch (e: any) {
+  } catch (e) {
     log.error(e)
-    return res.status(409).send(e.message)
+    return res.status(409).send(e)
   }
 }

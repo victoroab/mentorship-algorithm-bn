@@ -1,11 +1,18 @@
 import { prisma } from '../../config/prismaClient'
 import log from '../../config/logger'
 import { CreateMentorInput } from '../../schema/mentor/mentorSchema'
+import bcrypt from 'bcrypt'
 
 export const createMentorService = async (
   reqBody: CreateMentorInput['body']
 ) => {
   try {
+    const salt = await bcrypt.genSalt(
+      parseInt(process.env.SALT_WORK_FACTOR as string)
+    )
+
+    const hashedPassword = bcrypt.hashSync(reqBody.password, salt)
+
     const mentor = await prisma.mentor.create({
       data: {
         age: reqBody.age,
@@ -14,6 +21,7 @@ export const createMentorService = async (
         email: reqBody.email,
         ethnicity: reqBody.ethnicity,
         firstName: reqBody.firstName,
+        middleName: reqBody.middleName,
         lastName: reqBody.lastName,
         gender: reqBody.gender,
         level: reqBody.level,
@@ -22,10 +30,10 @@ export const createMentorService = async (
         Hobbies: { create: { hobbies: `${[...reqBody.hobbies]}` } },
         Skills: { create: { skills: `${[...reqBody.skills]}` } },
         Preferences: { create: { preferences: `${[...reqBody.preferences]}` } },
-        Password: { create: { password: reqBody.password } },
+        Password: { create: { password: hashedPassword } },
       },
     })
-    return mentor
+    return mentor.id
   } catch (e) {
     log.error(e)
   }

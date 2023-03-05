@@ -1,19 +1,19 @@
 import { Request, Response } from 'express'
-// import { createMenteeService } from '../../services/mentees/createMenteeService'
+import { createMenteeService } from '../../services/mentees/createMenteeService'
 import { CreateMenteeInput } from '../../schema/mentee/menteeSchema'
 import log from '../../config/logger'
 
-export const createMentorHandler = async (
+export const createMenteeHandler = async (
   req: Request<{}, {}, CreateMenteeInput['body']>,
   res: Response
 ) => {
   // receive user inputs from request body
-  // call createMentorService
+  // call createMenteeService
   try {
-    // const mentor = await createMentorService()
-    // res.json(mentor)
-  } catch (e: any) {
+    const mentee = await createMenteeService(req.body)
+    res.json(mentee)
+  } catch (e) {
     log.error(e)
-    return res.status(409).send(e.message)
+    return res.status(409).send(e)
   }
 }
