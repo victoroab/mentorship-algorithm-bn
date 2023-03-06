@@ -7,6 +7,14 @@ export const createMenteeService = async (
   reqBody: CreateMenteeInput['body']
 ) => {
   try {
+    const emailValiation = await prisma.mentor.findFirst({
+      where: { email: reqBody.email },
+    })
+
+    if (emailValiation?.email == reqBody.email) {
+      return 'this user exists'
+    }
+
     const salt = await bcrypt.genSalt(
       parseInt(process.env.SALT_WORK_FACTOR as string)
     )

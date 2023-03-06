@@ -30,7 +30,7 @@
 
 - [x] The mentor shall register an account using email, password and bio information
 - [x] The mentor shall accept requests to mentor students
-- [] The mentor shall be able to remove mentees
+- [x] The mentor shall be able to remove mentees
 
 ## Mentee
 
@@ -54,7 +54,15 @@
 - [x] A mentee shall only send mentor request to at most 3 mentors at a time
 - [] The automated matching provides a mentee with the 2 best mentors
 - [] A Mentor and Mentee(s) shall agree on duration of mentorship (4 weeks - 3 months)
-- [] A email cannot be reqistered as a mentor and mentee at the same time
+- [x] An email cannot be registered as a mentor and mentee at the same time
+
+## Features
+
+- [] Real time messaging
+- [] Task tracker
+- [] Image and file uploads
+- [] Push notifications
+- [] Automated Matching
 
 ## To-do
 
@@ -73,3 +81,5 @@
 - [] Create middleware to protect routes
 
 - [] Create DELETE route to delete users and relations
+
+- [] Create automated matching algorithm
