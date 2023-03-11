@@ -38,14 +38,12 @@ export const requestMentorshipService = async ({
     }
 
     if (requestCount[0]._count.mentorshipRequests < 3) {
-      const setMentee = await prisma.mentee.update({
+      await prisma.mentee.update({
         where: { id: menteeId },
         data: {
           mentorshipRequests: { create: { mentorId: mentorId } },
         },
       })
-
-      return setMentee
     } else {
       return 'Max Requests Reached'
     }

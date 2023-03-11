@@ -12,6 +12,8 @@ import { getMentorByIdHandler } from './controllers/mentors/getMentorByIdHandler
 import { requestMentorshipHandler } from './controllers/mentees/requestMentorshipHandler'
 import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipHandler'
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
+import { getMentorshipRequestHandler } from './controllers/mentees/getMentorshipRequestsHandler'
+import { deleteMentorshipRequestHandler } from './controllers/mentees/deleteMentorshipRequestHandler'
 
 const routes = (app: Express) => {
   // Health Check
@@ -37,6 +39,16 @@ const routes = (app: Express) => {
   app.post('/api/a/u/mentor/:mentorId/request-mentor', requestMentorshipHandler)
   app.post('/api/a/u/mentee/:menteeId/accept-mentee', acceptMentorshipHandler)
   app.post('/api/a/u/mentee/:menteeId/remove-mentee', removeMenteeHandler)
+
+  app.get(
+    '/api/a/u/mentee/get-mentorship-requests',
+    getMentorshipRequestHandler
+  )
+
+  app.post(
+    '/api/a/u/mentee/:mentorId/delete-mentorship-requests',
+    deleteMentorshipRequestHandler
+  )
 }
 
 export default routes
