@@ -38,14 +38,14 @@
 - [x] The mentee shall search for available mentors on the system
 - [x] The mentee shall view individual mentors
 - [x] The mentee shall request to a mentor to be mentored
-- [] The mentee shall request for meetings (online or in person)
+- [x] The mentee shall request for meetings (online or in person)
 
 ## System
 
 - [] The system shall send email notifications to mentors and mentees concerning meetings
 - [] The system shall allow mentees to rate mentors after mentorship period
 - [] The system shall automatically remove mentees from mentors after mentorship period
-- [] The system shall automatically provide a student with compatible mentors based on the student's choice
+- [x] The system shall provide a student with compatible mentors based on the student's choice
 
 ## Constraints
 
@@ -62,7 +62,7 @@
 - [] Task tracker
 - [] Image and file uploads
 - [] Push notifications
-- [] Automated Matching
+- [x] Matching System
 
 ## To-do
 
@@ -76,10 +76,10 @@
 
 - [x] Model a request table to keep track of mentorship requests
 
-- [] Set up PUT routes
-
-- [] Create middleware to protect routes
+- [x] Create endpoint for matching system
 
 - [] Create DELETE route to delete users and relations
 
-- [] Create automated matching algorithm
+- [x] Create automated matching algorithm
+
+- [] Authentication

@@ -14,6 +14,7 @@ import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipH
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
 import { getMentorshipRequestHandler } from './controllers/mentees/getMentorshipRequestsHandler'
 import { deleteMentorshipRequestHandler } from './controllers/mentees/deleteMentorshipRequestHandler'
+import { findMatchHandler } from './controllers/mentees/findMatchHandler'
 
 const routes = (app: Express) => {
   // Health Check
@@ -48,6 +49,11 @@ const routes = (app: Express) => {
   app.post(
     '/api/a/u/mentee/:mentorId/delete-mentorship-requests',
     deleteMentorshipRequestHandler
+  )
+
+  app.get(
+    '/api/a/u/mentee/:menteeId/matching-system/find-match',
+    findMatchHandler
   )
 }
 
