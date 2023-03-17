@@ -12,6 +12,6 @@ export const findMatchHandler = async (
     res.json(matches)
   } catch (e) {
     log.error(e)
-    return res.status(409).send(e)
+    return res.sendStatus(409)
   }
 }

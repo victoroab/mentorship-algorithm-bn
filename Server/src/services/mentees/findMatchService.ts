@@ -2,10 +2,15 @@ import { prisma } from '../../config/prismaClient'
 import log from '../../config/logger'
 
 type Matches = {
-  studentId: string
-  student: string
-  mentorId: string
-  mentor: string
+  id: string
+  name: string
+  age: number
+  gender: string
+  course: string
+  skills: string[]
+  hobbies: string[]
+  availability: string[]
+  preferences: string[]
   score: number
 }[]
 
@@ -105,17 +110,14 @@ export const findMatchService = async (menteeId: string) => {
       for (const mentor of mentors) {
         const score = getCompatibilityScore(student, mentor)
         matches.push({
-          studentId: student?.id,
-          student: student.name,
-          mentorId: mentor.id,
-          mentor: mentor.name,
+          ...mentor,
           score,
         })
       }
       return matches
     }
 
-    function findBestMatches(matchedArray: Matches) {
+    function findBestMatches(matchedArray: Matches): Matches {
       const sortedArray = matchedArray.sort((a, b) => a.score - b.score)
       const sl = sortedArray.slice(-2)
 
@@ -125,7 +127,8 @@ export const findMatchService = async (menteeId: string) => {
     }
 
     const matched = matchStudentWithMentors(menteeData, mentorData)
-    return findBestMatches(matched)
+    const bestMatches = findBestMatches(matched)
+    return bestMatches
   } catch (e) {
     log.error(e)
   }

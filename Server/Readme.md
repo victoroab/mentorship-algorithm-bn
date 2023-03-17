@@ -52,7 +52,7 @@
 - [x] A mentor shall only mentor 5 students at a time
 - [x] A mentee shall only have one mentor
 - [x] A mentee shall only send mentor request to at most 3 mentors at a time
-- [] The automated matching provides a mentee with the 2 best mentors
+- [x] The automated matching provides a mentee with the 2 best mentors
 - [] A Mentor and Mentee(s) shall agree on duration of mentorship (4 weeks - 3 months)
 - [x] An email cannot be registered as a mentor and mentee at the same time
 
