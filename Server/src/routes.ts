@@ -15,6 +15,10 @@ import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
 import { getMentorshipRequestHandler } from './controllers/mentees/getMentorshipRequestsHandler'
 import { deleteMentorshipRequestHandler } from './controllers/mentees/deleteMentorshipRequestHandler'
 import { findMatchHandler } from './controllers/mentees/findMatchHandler'
+import { uploadHandler } from './controllers/Images/uploadHandler'
+
+import { storage, upload } from './server'
+// const upload = multer({ storage: storage })
 
 const routes = (app: Express) => {
   // Health Check
@@ -55,6 +59,8 @@ const routes = (app: Express) => {
     '/api/a/u/mentee/:menteeId/matching-system/find-match',
     findMatchHandler
   )
+
+  app.post('/api/upload-image', upload.single('image'), uploadHandler)
 }
 
 export default routes
