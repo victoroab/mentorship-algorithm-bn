@@ -17,7 +17,10 @@ import { deleteMentorshipRequestHandler } from './controllers/mentees/deleteMent
 import { findMatchHandler } from './controllers/mentees/findMatchHandler'
 import { uploadHandler } from './controllers/Images/uploadHandler'
 
+import { getClerkUsers } from './auth/clerkUsers'
+
 import { storage, upload } from './server'
+import { sendData } from './controllers/sendData'
 // const upload = multer({ storage: storage })
 
 const routes = (app: Express) => {
@@ -61,6 +64,10 @@ const routes = (app: Express) => {
   )
 
   app.post('/api/upload-image', upload.single('image'), uploadHandler)
+
+  app.get('/api/get-users', getClerkUsers)
+
+  app.post('/api/send-data', sendData)
 }
 
 export default routes

@@ -33,7 +33,7 @@ export const requestMentorshipService = async ({
       },
     })
 
-    if (requestedMentorMenteesCount[0]._count.Mentee == 5) {
+    if (requestedMentorMenteesCount[0]._count.Mentee === 5) {
       return 'Mentor is at full capacity'
     }
 
