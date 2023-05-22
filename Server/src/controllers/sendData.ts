@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import log from '../config/logger'
 import { prisma } from '../config/prismaClient'
 
 export const sendData = async (req: Request, res: Response) => {
