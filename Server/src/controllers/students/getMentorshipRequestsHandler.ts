@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { getMentorshipRequests } from '../../services/mentees/getMentorshipRequestsService'
+import { getMentorshipRequests } from '../../services/students/getMentorshipRequestsService'
 
 export const getMentorshipRequestHandler = async (
   req: Request,

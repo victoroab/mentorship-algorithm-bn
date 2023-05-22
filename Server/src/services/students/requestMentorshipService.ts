@@ -9,7 +9,7 @@ export const requestMentorshipService = async ({
   menteeId: string
 }) => {
   try {
-    const requestCount = await prisma.mentee.findMany({
+    const requestCount = await prisma.student.findMany({
       where: {
         id: menteeId,
       },
@@ -38,7 +38,7 @@ export const requestMentorshipService = async ({
     }
 
     if (requestCount[0]._count.mentorshipRequests < 3) {
-      await prisma.mentee.update({
+      await prisma.student.update({
         where: { id: menteeId },
         data: {
           mentorshipRequests: { create: { mentorId: mentorId } },

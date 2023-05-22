@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const createMentorSchema = z.object({
+export const createStudentSchema = z.object({
   body: z.object({
     firstName: z.string({
       required_error: 'first name is required',
@@ -25,14 +25,8 @@ export const createMentorSchema = z.object({
     ethnicity: z.string({
       required_error: 'ethnicity is required',
     }),
-    department: z.string({
-      required_error: 'department is required',
-    }),
-    rank: z.string({
-      required_error: 'rank is required',
-    }),
-    staffNo: z.string({
-      required_error: 'staffNo is required',
+    matricNo: z.string({
+      required_error: 'matricNo is required',
     }),
     hobbies: z
       .array(
@@ -55,12 +49,14 @@ export const createMentorSchema = z.object({
         })
       )
       .nonempty(),
-    preferences: z.array(
-      z.string({
-        required_error: 'preferences is required',
-      })
-    ),
+    areasOfInterest: z
+      .array(
+        z.string({
+          required_error: 'areasOfInterest is required',
+        })
+      )
+      .nonempty(),
   }),
 })
 
-export type CreateMentorInput = z.infer<typeof createMentorSchema>
+export type CreateMenteeInput = z.infer<typeof createStudentSchema>

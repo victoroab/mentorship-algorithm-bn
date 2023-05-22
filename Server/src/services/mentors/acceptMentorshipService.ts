@@ -20,10 +20,10 @@ export const acceptMentorshipService = async ({
     }
 
     const acceptRequest = prisma.mentorshipRequests.deleteMany({
-      where: { menteeId: menteeId },
+      where: { studentId: menteeId },
     })
 
-    const assignMentee = prisma.mentee.update({
+    const assignMentee = prisma.student.update({
       where: { id: menteeId },
       data: { mentorId: mentorId },
     })

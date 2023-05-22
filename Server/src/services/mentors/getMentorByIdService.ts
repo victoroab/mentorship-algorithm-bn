@@ -10,8 +10,6 @@ export const getMentorByIdService = async (mentorId: string) => {
         middleName: true,
         lastName: true,
         gender: true,
-        level: true,
-        course: true,
         Hobbies: true,
         Skills: true,
       },

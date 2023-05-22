@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import log from '../../config/logger'
-import { findMatchService } from '../../services/mentees/findMatchService'
+import { findMatchService } from '../../services/students/findMatchService'
 
 export const findMatchHandler = async (
   req: Request<{ menteeId: string }, {}, {}>,

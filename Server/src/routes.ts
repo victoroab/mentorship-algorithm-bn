@@ -2,19 +2,19 @@ import { Express, Request, Response } from 'express'
 import validateRequest from './middware/validateRequest'
 
 import { createMentorSchema } from './schema/mentor/mentorSchema'
-import { createMenteeSchema } from './schema/mentee/menteeSchema'
+import { createStudentSchema } from './schema/student/studentSchema'
 
 import { createMentorHandler } from './controllers/mentors/createMentorHandler'
-import { createMenteeHandler } from './controllers/mentees/createMenteeHandler'
+import { createStudentHandler } from './controllers/students/createStudentHandler'
 import { getMentorsHandler } from './controllers/mentors/getMentorsHandler'
 import { getMentorByIdHandler } from './controllers/mentors/getMentorByIdHandler'
 
-import { requestMentorshipHandler } from './controllers/mentees/requestMentorshipHandler'
+import { requestMentorshipHandler } from './controllers/students/requestMentorshipHandler'
 import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipHandler'
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
-import { getMentorshipRequestHandler } from './controllers/mentees/getMentorshipRequestsHandler'
-import { deleteMentorshipRequestHandler } from './controllers/mentees/deleteMentorshipRequestHandler'
-import { findMatchHandler } from './controllers/mentees/findMatchHandler'
+import { getMentorshipRequestHandler } from './controllers/students/getMentorshipRequestsHandler'
+import { deleteMentorshipRequestHandler } from './controllers/students/deleteMentorshipRequestHandler'
+// import { findMatchHandler } from './controllers/students/findMatchHandler'
 import { uploadHandler } from './controllers/Images/uploadHandler'
 
 import { getClerkUsers } from './auth/clerkUsers'
@@ -36,9 +36,9 @@ const routes = (app: Express) => {
   )
 
   app.post(
-    '/api/u/mentee/register',
-    validateRequest(createMenteeSchema),
-    createMenteeHandler
+    '/api/u/student/register',
+    validateRequest(createStudentSchema),
+    createStudentHandler
   )
 
   app.get('/api/u/mentors/view', getMentorsHandler)
@@ -58,16 +58,16 @@ const routes = (app: Express) => {
     deleteMentorshipRequestHandler
   )
 
-  app.get(
-    '/api/a/u/mentee/:menteeId/matching-system/find-match',
-    findMatchHandler
-  )
+  // app.get(
+  //   '/api/a/u/mentee/:menteeId/matching-system/find-match',
+  //   findMatchHandler
+  // )
 
   app.post('/api/upload-image', upload.single('image'), uploadHandler)
 
-  app.get('/api/get-users', getClerkUsers)
+  // app.get('/api/get-users', getClerkUsers)
 
-  app.post('/api/send-data', sendData)
+  app.get('/api/get-students', sendData)
 }
 
 export default routes

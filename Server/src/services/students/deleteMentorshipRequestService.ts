@@ -10,7 +10,7 @@ export const deleteMentorshipRequests = async ({
 }) => {
   try {
     const requests = await prisma.mentorshipRequests.deleteMany({
-      where: { menteeId: menteeId, mentorId: mentorId },
+      where: { studentId: menteeId, mentorId: mentorId },
     })
     return requests
   } catch (e) {

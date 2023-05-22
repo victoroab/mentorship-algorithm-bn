@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { deleteMentorshipRequests } from '../../services/mentees/deleteMentorshipRequestService'
+import { deleteMentorshipRequests } from '../../services/students/deleteMentorshipRequestService'
 
 export const deleteMentorshipRequestHandler = async (
   req: Request<{ mentorId: string }, {}, { menteeId: string }>,
