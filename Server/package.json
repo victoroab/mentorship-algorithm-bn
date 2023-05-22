@@ -7,7 +7,7 @@
     "start": "node build/server.js",
     "dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run migrate:deploy && tsc",
+    "build": "tsc",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
