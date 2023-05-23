@@ -15,7 +15,7 @@ export const upload = multer({ storage: storage })
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://fypplayground-client-m5nwvgkkz-victoroab.vercel.app/'
+    'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/'
   )
   res.header(
     'Access-Control-Allow-Headers',
@@ -30,7 +30,7 @@ app.use(
       'http://localhost:3000',
       'http://localhost:3500',
       'http://localhost:5173',
-      'https://fypplayground-client-m5nwvgkkz-victoroab.vercel.app/',
+      'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/',
     ],
     credentials: true,
   })
