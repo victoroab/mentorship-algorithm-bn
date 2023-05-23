@@ -12,14 +12,6 @@ const PORT = parseInt(process.env.PORT as string) || 3500
 export const storage = multer.memoryStorage()
 export const upload = multer({ storage: storage })
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/'
-  )
-  next()
-})
-
 app.use(
   cors({
     origin: [
@@ -31,6 +23,14 @@ app.use(
     credentials: true,
   })
 )
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/'
+  )
+  next()
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
