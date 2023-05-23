@@ -27,3 +27,5 @@
 ## SCHEMA
 
 - [x] Change zod input validation for all routes
+
+seyi@db.com

@@ -14,11 +14,7 @@ export const storage = multer.memoryStorage()
 export const upload = multer({ storage: storage })
 
 const corsOptions = {
-  origin: [
-    'https://fypplayground-client-oms7b92ne-victoroab.vercel.app/',
-    'https://test-fyp-client.onrender.com/',
-    'http://localhost:5173',
-  ],
+  origin: '*',
   credentials: true,
 }
 
@@ -37,10 +33,7 @@ app.use(cors(corsOptions))
 // )
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://fypplayground-client-oms7b92ne-victoroab.vercel.app'
-  )
+  res.header('Access-Control-Allow-Origin', '*')
   next()
 })
 
