@@ -16,6 +16,7 @@ export const upload = multer({ storage: storage })
 const corsOptions = {
   origin: [
     'https://fypplayground-client-oms7b92ne-victoroab.vercel.app/',
+    'https://test-fyp-client.onrender.com/',
     'http://localhost:5173',
   ],
   credentials: true,
