@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 import cors from 'cors'
 import log from './config/logger'
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import routes from './routes'
 import multer from 'multer'
 
@@ -11,6 +11,18 @@ const PORT = parseInt(process.env.PORT as string) || 3500
 
 export const storage = multer.memoryStorage()
 export const upload = multer({ storage: storage })
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://fypplayground-client-m5nwvgkkz-victoroab.vercel.app/'
+  )
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
 
 app.use(
   cors({
