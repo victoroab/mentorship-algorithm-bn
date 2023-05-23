@@ -17,10 +17,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     'Access-Control-Allow-Origin',
     'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/'
   )
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
   next()
 })
 
