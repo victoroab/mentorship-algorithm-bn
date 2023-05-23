@@ -35,13 +35,13 @@ app.use(cors(corsOptions))
 //   })
 // )
 
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//   res.header(
-//     'Access-Control-Allow-Origin',
-//     'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/'
-//   )
-//   next()
-// })
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://fypplayground-client-oms7b92ne-victoroab.vercel.app'
+  )
+  next()
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
