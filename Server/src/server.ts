@@ -18,6 +18,7 @@ app.use(
       'http://localhost:3000',
       'http://localhost:3500',
       'http://localhost:5173',
+      'https://fypplayground-client-m5nwvgkkz-victoroab.vercel.app/',
     ],
     credentials: true,
   })
