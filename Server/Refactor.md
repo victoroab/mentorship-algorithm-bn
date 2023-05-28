@@ -5,7 +5,7 @@
 - [x] Remodel database schema to have mentor and student as primary users
 - [x] Change the related columns for the users
 - [] Provide indexing for tables
-- [] Host db and test
+- [x] Host db and test
 
 ## FUNCTIONALITY
 
@@ -27,5 +27,3 @@
 ## SCHEMA
 
 - [x] Change zod input validation for all routes
-
-seyi@db.com

@@ -20,18 +20,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-// app.use(
-//   cors({
-//     origin: [
-//       'http://localhost:3000',
-//       'http://localhost:3500',
-//       'http://localhost:5173',
-//       'https://fypplayground-client-dn13n5d7y-victoroab.vercel.app/',
-//     ],
-//     credentials: true,
-//   })
-// )
-
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.header('Access-Control-Allow-Origin', '*')
   next()
