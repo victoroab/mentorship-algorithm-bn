@@ -1,4 +1,3 @@
-import { Request, Response } from 'express'
 import Clerk from '@clerk/clerk-sdk-node/esm/instance'
 
 const clerk = Clerk({
