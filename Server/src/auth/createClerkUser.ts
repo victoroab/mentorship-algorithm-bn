@@ -1,4 +1,4 @@
-import clerk from '../../src/config/clerk/clerk'
+import clerk from '../config/clerk/clerk'
 import { Request, Response } from 'express'
 
 export const getClerkUsers = async (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ export const createClerkUser = async (req: Request, res: Response) => {
       emailAddress: ['victorbalogun439@gmail.com'],
       firstName: 'Victor',
       lastName: 'Balogun',
-      password: 'pp,ej2o9hn002ia',
+      password: 'hiur09380ika,jq0jjhnc',
     })
 
     res.send(newUser.emailAddresses)
