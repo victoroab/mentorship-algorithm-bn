@@ -22,7 +22,7 @@
 
 ## Services
 
-- [] Set up file upload to amazon S3
+- [] Set up file upload to storage bucket
 
 # Business Logic
 

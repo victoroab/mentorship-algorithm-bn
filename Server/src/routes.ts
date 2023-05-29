@@ -1,5 +1,5 @@
 import { Express, Request, Response } from 'express'
-import validateRequest from './middware/validateRequest'
+import validateRequest from './middleware/requests/validateRequest'
 
 import { createMentorSchema } from './schema/mentor/mentorSchema'
 import { createStudentSchema } from './schema/student/studentSchema'
@@ -14,17 +14,12 @@ import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipH
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
 import { getMentorshipRequestHandler } from './controllers/students/getMentorshipRequestsHandler'
 import { deleteMentorshipRequestHandler } from './controllers/students/deleteMentorshipRequestHandler'
-// import { findMatchHandler } from './controllers/students/findMatchHandler'
-import { uploadHandler } from './controllers/Images/uploadHandler'
 
-import { getClerkUsers } from './auth/clerkUsers'
+import { getClerkUsers, createClerkUser } from './auth/createClerkUser'
 
-import { storage, upload } from './server'
 import { sendData } from './controllers/sendData'
-// const upload = multer({ storage: storage })
 
 const routes = (app: Express) => {
-  // Health Check
   app.get('/health-check', (req: Request, res: Response) => {
     res.sendStatus(200)
   })
@@ -58,16 +53,10 @@ const routes = (app: Express) => {
     deleteMentorshipRequestHandler
   )
 
-  // app.get(
-  //   '/api/a/u/mentee/:menteeId/matching-system/find-match',
-  //   findMatchHandler
-  // )
-
-  app.post('/api/upload-image', upload.single('image'), uploadHandler)
-
-  // app.get('/api/get-users', getClerkUsers)
-
   app.get('/api/get-students', sendData)
+
+  app.get('/api/auth/get-users', getClerkUsers)
+  app.post('/api/auth/create-user', createClerkUser)
 }
 
 export default routes

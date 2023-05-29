@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import log from '../../config/logger'
+import log from '../../config/logger/logger'
 import { removeMenteeService } from '../../services/mentors/removeMenteeService'
 
 export const removeMenteeHandler = async (req: Request, res: Response) => {

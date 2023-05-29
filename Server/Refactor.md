@@ -10,7 +10,7 @@
 ## FUNCTIONALITY
 
 - [] Integrate Clerk endpoint for creating users
-- [] Integrate Cloudnairy endpoint for file uploads
+- [] Integrate supabase endpoint for file uploads
 - [] Messaging functionality for users
 - [] Integrate Video confercening service
 

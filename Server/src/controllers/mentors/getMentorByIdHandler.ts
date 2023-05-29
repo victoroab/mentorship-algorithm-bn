@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import log from '../../config/logger'
+import log from '../../config/logger/logger'
 import { getMentorByIdService } from '../../services/mentors/getMentorByIdService'
 
 export const getMentorByIdHandler = async (req: Request, res: Response) => {

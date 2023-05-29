@@ -1,5 +1,5 @@
-import { prisma } from '../../config/prismaClient'
-import log from '../../config/logger'
+import { prisma } from '../../config/prismaClient/prismaClient'
+import log from '../../config/logger/logger'
 
 export const getMentorsService = async () => {
   try {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { createStudentService } from '../../services/students/createStudentService'
 import { CreateMenteeInput } from '../../schema/student/studentSchema'
-import log from '../../config/logger'
+import log from '../../config/logger/logger'
 
 export const createStudentHandler = async (
   req: Request<{}, {}, CreateMenteeInput['body']>,

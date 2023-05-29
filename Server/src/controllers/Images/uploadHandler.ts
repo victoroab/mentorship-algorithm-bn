@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import { PutObjectCommand } from '@aws-sdk/client-s3'
-import { s3, bucketName } from '../../config/s3Config'
+import { s3, bucketName } from '../../config/s3/s3Config'
 import crypto from 'crypto'
-import log from '../../config/logger'
+import log from '../../config/logger/logger'
 
 const randomImageName = (byte = 32) => crypto.randomBytes(byte).toString('hex')
 

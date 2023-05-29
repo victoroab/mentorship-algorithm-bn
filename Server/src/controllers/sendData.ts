@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { prisma } from '../config/prismaClient'
+import { prisma } from '../config/prismaClient/prismaClient'
 
 export const sendData = async (req: Request, res: Response) => {
   try {
