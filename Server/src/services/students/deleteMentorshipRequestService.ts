@@ -2,15 +2,15 @@ import { prisma } from '../../config/prismaClient/prismaClient'
 import log from '../../config/logger/logger'
 
 export const deleteMentorshipRequests = async ({
-  menteeId,
+  studentId,
   mentorId,
 }: {
-  menteeId: string
+  studentId: string
   mentorId: string
 }) => {
   try {
     const requests = await prisma.mentorshipRequests.deleteMany({
-      where: { studentId: menteeId, mentorId: mentorId },
+      where: { studentId: studentId, mentorId: mentorId },
     })
     return requests
   } catch (e) {

@@ -5,8 +5,11 @@ import { requestMentorshipService } from '../../services/students/requestMentors
 export const requestMentorshipHandler = async (req: Request, res: Response) => {
   try {
     const { mentorId } = req.params
-    const menteeId: string = req.body?.menteeId
-    const requestMentor = await requestMentorshipService({ mentorId, menteeId })
+    const studentId: string = req.body?.studentId
+    const requestMentor = await requestMentorshipService({
+      mentorId,
+      studentId,
+    })
     res.json(requestMentor)
   } catch (e) {
     log.error(e)

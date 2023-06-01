@@ -80,6 +80,6 @@
 
 - [] Create DELETE route to delete users and relations
 
-- [x] Create automated matching algorithm
+- [] Create automated matching algorithm
 
 - [] Authentication

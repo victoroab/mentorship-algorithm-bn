@@ -3,10 +3,10 @@ import log from '../../config/logger/logger'
 
 export const acceptMentorshipService = async ({
   mentorId,
-  menteeId,
+  studentId,
 }: {
   mentorId: string
-  menteeId: string
+  studentId: string
 }) => {
   try {
     //
@@ -15,22 +15,22 @@ export const acceptMentorshipService = async ({
       select: { _count: { select: { Mentee: true } } },
     })
 
-    if (menteeCount[0]._count.Mentee == 5) {
+    if (menteeCount[0]._count.Mentee === 5) {
       return 'Mentee capacity reached'
     }
 
-    const acceptRequest = prisma.mentorshipRequests.deleteMany({
-      where: { studentId: menteeId },
-    })
-
     const assignMentee = prisma.student.update({
-      where: { id: menteeId },
+      where: { id: studentId },
       data: { mentorId: mentorId },
     })
 
-    const transaction = await prisma.$transaction([acceptRequest, assignMentee])
+    const acceptRequest = prisma.mentorshipRequests.deleteMany({
+      where: { studentId: studentId, mentorId: mentorId },
+    })
 
-    return transaction
+    await prisma.$transaction([acceptRequest, assignMentee])
+
+    return 'Accepted'
   } catch (e) {
     log.error(e)
   }

@@ -4,7 +4,8 @@ import log from '../../config/logger/logger'
 export const getMentorshipRequests = async () => {
   try {
     const requests = await prisma.student.findUnique({
-      where: { id: '4c228a98-a889-4e97-9ad8-1c8358041d4d' },
+      // placeholder id for testing frontend
+      where: { id: '040b71b8-e08a-4de8-8cd9-3c5d0d7e498f' },
       select: {
         mentorshipRequests: {
           select: {

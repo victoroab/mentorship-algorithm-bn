@@ -14,7 +14,7 @@ export const createStudentService = async (
       return 'this user exists'
     }
 
-    const mentee = await prisma.student.create({
+    const student = await prisma.student.create({
       data: {
         age: reqBody.age,
         // class: reqBody.class,
@@ -31,7 +31,7 @@ export const createStudentService = async (
         Skills: { create: { skills: `${[...reqBody.skills]}` } },
       },
     })
-    return mentee.id
+    return student.id
   } catch (e) {
     log.error(e)
   }

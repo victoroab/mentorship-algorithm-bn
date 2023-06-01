@@ -40,8 +40,8 @@ const routes = (app: Express) => {
   app.get('/api/u/mentors/view/:mentorId', getMentorByIdHandler)
 
   app.post('/api/a/u/mentor/:mentorId/request-mentor', requestMentorshipHandler)
-  app.post('/api/a/u/mentee/:menteeId/accept-mentee', acceptMentorshipHandler)
-  app.post('/api/a/u/mentee/:menteeId/remove-mentee', removeMenteeHandler)
+  app.post('/api/a/u/mentee/:studentId/accept-mentee', acceptMentorshipHandler)
+  app.post('/api/a/u/mentee/:studentId/remove-mentee', removeMenteeHandler)
 
   app.get(
     '/api/a/u/mentee/get-mentorship-requests',

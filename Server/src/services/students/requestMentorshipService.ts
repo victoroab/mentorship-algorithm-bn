@@ -3,15 +3,34 @@ import log from '../../config/logger/logger'
 
 export const requestMentorshipService = async ({
   mentorId,
-  menteeId,
+  studentId,
 }: {
   mentorId: string
-  menteeId: string
+  studentId: string
 }) => {
   try {
+    const isRequested = await prisma.student.findFirst({
+      where: { id: studentId },
+      select: { mentorshipRequests: { where: { mentorId: mentorId } } },
+    })
+
+    if (isRequested?.mentorshipRequests[0]) {
+      return 'You have already sent a request to this mentor'
+    }
+
+    // const isAccepted = await prisma.student.findFirst({
+    //   where: { mentorId: mentorId },
+    // })
+
+    // // return isAccepted
+
+    // if (isAccepted !== null) {
+    //   return 'Already your mentor'
+    // }
+
     const requestCount = await prisma.student.findMany({
       where: {
-        id: menteeId,
+        id: studentId,
       },
       select: {
         _count: {
@@ -21,6 +40,12 @@ export const requestMentorshipService = async ({
         },
       },
     })
+
+    if (requestCount.length === 0) {
+      return 'You already have a mentor'
+    }
+
+    // return requestCount
 
     const requestedMentorMenteesCount = await prisma.mentor.findMany({
       where: { id: mentorId },
@@ -39,11 +64,13 @@ export const requestMentorshipService = async ({
 
     if (requestCount[0]._count.mentorshipRequests < 3) {
       await prisma.student.update({
-        where: { id: menteeId },
+        where: { id: studentId },
         data: {
           mentorshipRequests: { create: { mentorId: mentorId } },
         },
       })
+
+      return 'Request Sent'
     } else {
       return 'Max Requests Reached'
     }

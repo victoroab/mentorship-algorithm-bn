@@ -6,11 +6,12 @@
 - [x] Change the related columns for the users
 - [] Provide indexing for tables
 - [x] Host db and test
+- [] Modify schema to store id's from clerk
 
 ## FUNCTIONALITY
 
-- [] Integrate Clerk endpoint for creating users
-- [] Integrate supabase endpoint for file uploads
+- [] Create endpoint for creating users using clerks api
+- [] cretae endpoint for storing image id's
 - [] Messaging functionality for users
 - [] Integrate Video confercening service
 
@@ -27,3 +28,7 @@
 ## SCHEMA
 
 - [x] Change zod input validation for all routes
+
+## EDGE CASES
+
+- [] Prevent students from sending a mentorship request to their mentors

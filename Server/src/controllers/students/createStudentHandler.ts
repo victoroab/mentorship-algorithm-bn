@@ -10,8 +10,8 @@ export const createStudentHandler = async (
   // receive user inputs from request body
   // call createMenteeService
   try {
-    const mentee = await createStudentService(req.body)
-    res.json(mentee)
+    const student = await createStudentService(req.body)
+    res.json(student)
   } catch (e) {
     log.error(e)
     return res.status(409).send(e)

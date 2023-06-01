@@ -4,9 +4,12 @@ import { acceptMentorshipService } from '../../services/mentors/acceptMentorship
 
 export const acceptMentorshipHandler = async (req: Request, res: Response) => {
   try {
-    const { menteeId } = req.params
+    const { studentId } = req.params
     const mentorId: string = req.body?.mentorId
-    const acceptMentorship = acceptMentorshipService({ mentorId, menteeId })
+    const acceptMentorship = await acceptMentorshipService({
+      mentorId,
+      studentId,
+    })
     res.json(acceptMentorship)
   } catch (e) {
     log.error(e)
