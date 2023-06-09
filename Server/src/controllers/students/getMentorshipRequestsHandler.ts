@@ -6,7 +6,8 @@ export const getMentorshipRequestHandler = async (
   res: Response
 ) => {
   try {
-    const mentorshipRequests = await getMentorshipRequests()
+    const studentEmail: string = req.body?.studentEmail
+    const mentorshipRequests = await getMentorshipRequests(studentEmail)
     res.json(mentorshipRequests)
   } catch (e) {
     console.log(e)

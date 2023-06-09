@@ -13,7 +13,6 @@ export const createStudentHandler = async (
     const student = await createStudentService(req.body)
     res.json(student)
   } catch (e) {
-    log.error(e)
-    return res.status(409).send(e)
+    res.send(e)
   }
 }

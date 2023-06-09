@@ -25,36 +25,35 @@ const routes = (app: Express) => {
   })
 
   app.post(
-    '/api/u/mentor/register',
+    '/api/mentor/register',
     validateRequest(createMentorSchema),
     createMentorHandler
   )
 
   app.post(
-    '/api/u/student/register',
+    '/api/student/register',
     validateRequest(createStudentSchema),
     createStudentHandler
   )
 
-  app.get('/api/u/mentors/view', getMentorsHandler)
-  app.get('/api/u/mentors/view/:mentorId', getMentorByIdHandler)
+  app.get('/api/mentors/view', getMentorsHandler)
 
-  app.post('/api/a/u/mentor/:mentorId/request-mentor', requestMentorshipHandler)
-  app.post('/api/a/u/mentee/:studentId/accept-mentee', acceptMentorshipHandler)
-  app.post('/api/a/u/mentee/:studentId/remove-mentee', removeMenteeHandler)
+  app.get('/api/mentors/view/:mentorId', getMentorByIdHandler)
 
-  app.get(
-    '/api/a/u/mentee/get-mentorship-requests',
-    getMentorshipRequestHandler
-  )
+  app.post('/api/mentor/:mentorId/request-mentor', requestMentorshipHandler)
+
+  app.post('/api/mentee/:studentId/accept-mentee', acceptMentorshipHandler)
+
+  app.post('/api/mentee/:studentId/remove-mentee', removeMenteeHandler)
+
+  app.post('/api/mentee/get-mentorship-requests', getMentorshipRequestHandler)
 
   app.post(
-    '/api/a/u/mentee/:mentorId/delete-mentorship-requests',
+    '/api/mentee/:mentorId/delete-mentorship-requests',
     deleteMentorshipRequestHandler
   )
 
   app.get('/api/get-students', sendData)
-
   app.get('/api/auth/get-users', getClerkUsers)
   app.post('/api/auth/create-user', createClerkUser)
 }

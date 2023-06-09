@@ -2,15 +2,15 @@ import { Request, Response } from 'express'
 import { deleteMentorshipRequests } from '../../services/students/deleteMentorshipRequestService'
 
 export const deleteMentorshipRequestHandler = async (
-  req: Request<{ mentorId: string }, {}, { studentId: string }>,
+  req: Request<{ mentorId: string }, {}, { studentEmail: string }>,
   res: Response
 ) => {
   try {
-    const { studentId } = req.body
+    const { studentEmail } = req.body
     const mentorId = req.params?.mentorId
 
     const deleteMentorship = await deleteMentorshipRequests({
-      studentId,
+      studentEmail,
       mentorId,
     })
     res.json(deleteMentorship)

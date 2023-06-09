@@ -1,11 +1,11 @@
 import { prisma } from '../../config/prismaClient/prismaClient'
 import log from '../../config/logger/logger'
 
-export const getMentorshipRequests = async () => {
+export const getMentorshipRequests = async (studentEmail: string) => {
   try {
     const requests = await prisma.student.findUnique({
       // placeholder id for testing frontend
-      where: { id: '040b71b8-e08a-4de8-8cd9-3c5d0d7e498f' },
+      where: { email: studentEmail },
       select: {
         mentorshipRequests: {
           select: {

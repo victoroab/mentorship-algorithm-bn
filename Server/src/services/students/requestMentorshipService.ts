@@ -3,14 +3,14 @@ import log from '../../config/logger/logger'
 
 export const requestMentorshipService = async ({
   mentorId,
-  studentId,
+  studentEmail,
 }: {
   mentorId: string
-  studentId: string
+  studentEmail: string
 }) => {
   try {
     const isRequested = await prisma.student.findFirst({
-      where: { id: studentId },
+      where: { email: studentEmail },
       select: { mentorshipRequests: { where: { mentorId: mentorId } } },
     })
 
@@ -30,7 +30,7 @@ export const requestMentorshipService = async ({
 
     const requestCount = await prisma.student.findMany({
       where: {
-        id: studentId,
+        email: studentEmail,
       },
       select: {
         _count: {
@@ -64,7 +64,7 @@ export const requestMentorshipService = async ({
 
     if (requestCount[0]._count.mentorshipRequests < 3) {
       await prisma.student.update({
-        where: { id: studentId },
+        where: { email: studentEmail },
         data: {
           mentorshipRequests: { create: { mentorId: mentorId } },
         },

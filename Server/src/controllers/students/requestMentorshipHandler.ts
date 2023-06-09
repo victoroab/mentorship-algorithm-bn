@@ -5,10 +5,10 @@ import { requestMentorshipService } from '../../services/students/requestMentors
 export const requestMentorshipHandler = async (req: Request, res: Response) => {
   try {
     const { mentorId } = req.params
-    const studentId: string = req.body?.studentId
+    const studentEmail: string = req.body?.studentEmail
     const requestMentor = await requestMentorshipService({
       mentorId,
-      studentId,
+      studentEmail,
     })
     res.json(requestMentor)
   } catch (e) {
