@@ -5,9 +5,9 @@ import { acceptMentorshipService } from '../../services/mentors/acceptMentorship
 export const acceptMentorshipHandler = async (req: Request, res: Response) => {
   try {
     const { studentId } = req.params
-    const mentorId: string = req.body?.mentorId
+    const mentorEmail: string = req.body?.mentorEmail
     const acceptMentorship = await acceptMentorshipService({
-      mentorId,
+      mentorEmail,
       studentId,
     })
     res.json(acceptMentorship)

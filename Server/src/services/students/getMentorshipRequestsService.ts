@@ -26,3 +26,44 @@ export const getMentorshipRequests = async (studentEmail: string) => {
     log.error(e)
   }
 }
+
+export const getMentorRequests = async (mentorEmail: string) => {
+  try {
+    const requests = await prisma.mentor.findUnique({
+      // placeholder id for testing frontend
+      where: { email: mentorEmail },
+      select: {
+        mentorshipRequests: {
+          select: {
+            student: {
+              select: {
+                id: true,
+                firstName: true,
+                email: true,
+                lastName: true,
+                matricNo: true,
+                middleName: true,
+              },
+            },
+          },
+        },
+      },
+    })
+
+    return requests
+  } catch (e) {
+    log.error(e)
+  }
+}
+
+export const getStudentService = async (mentorEmail: string) => {
+  const students = await prisma.mentor.findFirst({
+    where: { email: mentorEmail },
+    select: {
+      Mentee: {
+        select: { id: true, firstName: true, lastName: true, email: true },
+      },
+    },
+  })
+  return students
+}

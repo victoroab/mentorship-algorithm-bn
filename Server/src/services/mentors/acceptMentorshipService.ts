@@ -2,16 +2,22 @@ import { prisma } from '../../config/prismaClient/prismaClient'
 import log from '../../config/logger/logger'
 
 export const acceptMentorshipService = async ({
-  mentorId,
+  mentorEmail,
   studentId,
 }: {
-  mentorId: string
+  mentorEmail: string
   studentId: string
 }) => {
   try {
     //
+
+    const mentor = await prisma.mentor.findFirst({
+      where: { email: mentorEmail },
+      select: { id: true },
+    })
+
     const menteeCount = await prisma.mentor.findMany({
-      where: { id: mentorId },
+      where: { email: mentorEmail },
       select: { _count: { select: { Mentee: true } } },
     })
 
@@ -21,11 +27,11 @@ export const acceptMentorshipService = async ({
 
     const assignMentee = prisma.student.update({
       where: { id: studentId },
-      data: { mentorId: mentorId },
+      data: { mentorId: mentor?.id },
     })
 
     const acceptRequest = prisma.mentorshipRequests.deleteMany({
-      where: { studentId: studentId, mentorId: mentorId },
+      where: { studentId: studentId, mentorId: mentor?.id },
     })
 
     await prisma.$transaction([acceptRequest, assignMentee])

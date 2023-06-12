@@ -11,8 +11,12 @@ export const getMentorsService = async () => {
         lastName: true,
         gender: true,
         email: true,
+        rank: true,
+        department: true,
+        staffNo: true,
         Hobbies: true,
         Skills: true,
+        // Model Specialization in db schema
       },
     })
     return mentors

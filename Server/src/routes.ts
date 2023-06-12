@@ -12,12 +12,17 @@ import { getMentorByIdHandler } from './controllers/mentors/getMentorByIdHandler
 import { requestMentorshipHandler } from './controllers/students/requestMentorshipHandler'
 import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipHandler'
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
-import { getMentorshipRequestHandler } from './controllers/students/getMentorshipRequestsHandler'
+import {
+  getMentorRequestHandler,
+  getStudentRequestHandler,
+  getStudentsHandler,
+} from './controllers/students/getMentorshipRequestsHandler'
 import { deleteMentorshipRequestHandler } from './controllers/students/deleteMentorshipRequestHandler'
 
 import { getClerkUsers, createClerkUser } from './auth/createClerkUser'
 
 import { sendData } from './controllers/sendData'
+import { getUser } from './auth/getUser'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {
@@ -46,12 +51,16 @@ const routes = (app: Express) => {
 
   app.post('/api/mentee/:studentId/remove-mentee', removeMenteeHandler)
 
-  app.post('/api/mentee/get-mentorship-requests', getMentorshipRequestHandler)
+  app.post('/api/mentee/get-mentorship-requests', getStudentRequestHandler)
+  app.post('/api/mentor/get-mentorship-requests', getMentorRequestHandler)
+  app.post('/api/mentor/get-students', getStudentsHandler)
 
   app.post(
     '/api/mentee/:mentorId/delete-mentorship-requests',
     deleteMentorshipRequestHandler
   )
+
+  app.post('/api/sign-up/get-user', getUser)
 
   app.get('/api/get-students', sendData)
   app.get('/api/auth/get-users', getClerkUsers)

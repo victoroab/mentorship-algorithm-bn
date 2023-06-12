@@ -55,11 +55,11 @@ export const createMentorSchema = z.object({
         })
       )
       .nonempty(),
-    preferences: z.array(
-      z.string({
-        required_error: 'preferences is required',
-      })
-    ),
+    // preferences: z.array(
+    //   z.string({
+    //     required_error: 'preferences is required',
+    //   })
+    // ),
   }),
 })
 

@@ -29,7 +29,7 @@ export const createMentorService = async (
         Availability: { create: { days: `${[...reqBody.availability]}` } },
         Hobbies: { create: { hobbies: `${[...reqBody.hobbies]}` } },
         Skills: { create: { skills: `${[...reqBody.skills]}` } },
-        Preferences: { create: { preferences: `${[...reqBody.preferences]}` } },
+        Preferences: { create: { preferences: `${[]}` } },
       },
     })
     return mentor.id
