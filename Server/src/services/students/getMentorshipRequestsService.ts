@@ -67,3 +67,39 @@ export const getStudentService = async (mentorEmail: string) => {
   })
   return students
 }
+
+export const getStudentByIDService = async (studentId: string) => {
+  const student = await prisma.student.findFirst({
+    where: { id: studentId },
+    include: {
+      Hobbies: { select: { hobbies: true } },
+      AreasOfInterest: { select: { aoi: true } },
+      Availability: { select: { days: true } },
+      Skills: { select: { skills: true } },
+    },
+  })
+  return student
+}
+
+export const getMentorService = async (studentEmail: string) => {
+  try {
+    const mentor = await prisma.student.findFirst({
+      where: { email: studentEmail },
+      select: {
+        mentor: {
+          select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            email: true,
+            rank: true,
+            department: true,
+            gender: true,
+          },
+        },
+      },
+    })
+
+    return mentor
+  } catch (e) {}
+}

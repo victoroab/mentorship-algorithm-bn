@@ -13,7 +13,9 @@ import { requestMentorshipHandler } from './controllers/students/requestMentorsh
 import { acceptMentorshipHandler } from './controllers/mentors/acceptMentorshipHandler'
 import { removeMenteeHandler } from './controllers/mentors/removeMenteeHandler'
 import {
+  getMentorHandler,
   getMentorRequestHandler,
+  getStudentByIdHandler,
   getStudentRequestHandler,
   getStudentsHandler,
 } from './controllers/students/getMentorshipRequestsHandler'
@@ -52,8 +54,11 @@ const routes = (app: Express) => {
   app.post('/api/mentee/:studentId/remove-mentee', removeMenteeHandler)
 
   app.post('/api/mentee/get-mentorship-requests', getStudentRequestHandler)
+  app.post('/api/mentee/get-mentor', getMentorHandler)
+
   app.post('/api/mentor/get-mentorship-requests', getMentorRequestHandler)
   app.post('/api/mentor/get-students', getStudentsHandler)
+  app.post('/api/mentor/get-student-by-id', getStudentByIdHandler)
 
   app.post(
     '/api/mentee/:mentorId/delete-mentorship-requests',

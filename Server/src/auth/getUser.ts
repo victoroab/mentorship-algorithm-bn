@@ -7,12 +7,12 @@ export const getUser = async (req: Request, res: Response) => {
   try {
     const isStudent = await prisma.student.findUnique({
       where: { email: email },
-      select: { email: true },
+      select: { email: true, mentor: { select: { email: true } } },
     })
 
     const isMentor = await prisma.mentor.findUnique({
       where: { email: email },
-      select: { email: true },
+      select: { email: true, Mentee: { select: { id: true, email: true } } },
     })
 
     if (isStudent) {
