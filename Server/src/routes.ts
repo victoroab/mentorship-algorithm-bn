@@ -25,6 +25,7 @@ import { getClerkUsers, createClerkUser } from './auth/createClerkUser'
 
 import { sendData } from './controllers/sendData'
 import { getUser } from './auth/getUser'
+import { createStudentTaskHandler } from './controllers/students/createStudentTaskHandler'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {
@@ -66,10 +67,9 @@ const routes = (app: Express) => {
   )
 
   app.post('/api/sign-up/get-user', getUser)
-
   app.get('/api/get-students', sendData)
-  app.get('/api/auth/get-users', getClerkUsers)
-  app.post('/api/auth/create-user', createClerkUser)
+
+  app.post('/api/mentee/create-task', createStudentTaskHandler)
 }
 
 export default routes

@@ -35,6 +35,14 @@ model Student {
   Availability       StudentAvailability  @relation(fields: [availabilityId], references: [id], onDelete: Cascade)
   availabilityId     String               @unique
   mentorshipRequests MentorshipRequests[]
+  tasks              StudentsTasks[]
+}
+
+model StudentsTasks {
+  id           String  @id @default(uuid())
+  title        String
+  student      Student @relation(fields: [studentEmail], references: [email])
+  studentEmail String
 }
 
 model AreasOfInterest {
