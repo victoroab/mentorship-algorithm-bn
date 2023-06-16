@@ -31,7 +31,7 @@ export const acceptMentorshipService = async ({
     })
 
     const acceptRequest = prisma.mentorshipRequests.deleteMany({
-      where: { studentId: studentId, mentorId: mentor?.id },
+      where: { studentId: studentId },
     })
 
     await prisma.$transaction([acceptRequest, assignMentee])
