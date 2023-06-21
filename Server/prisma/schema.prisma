@@ -10,6 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Messages {
+  id         String   @id @default(uuid())
+  sender     String
+  message    String
+  receipent  String
+  created_at DateTime @default(now())
+}
+
 model Student {
   id                 String               @id @default(uuid())
   firstName          String
@@ -36,6 +44,7 @@ model Student {
   availabilityId     String               @unique
   mentorshipRequests MentorshipRequests[]
   tasks              StudentsTasks[]
+  schedules          StudentSchedules[]
 }
 
 model StudentsTasks {
@@ -43,6 +52,14 @@ model StudentsTasks {
   title        String
   student      Student @relation(fields: [studentEmail], references: [email])
   studentEmail String
+}
+
+model StudentSchedules {
+  id           String  @id @default(uuid())
+  title        String
+  student      Student @relation(fields: [studentEmail], references: [email])
+  studentEmail String
+  date         String
 }
 
 model AreasOfInterest {
