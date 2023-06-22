@@ -48,10 +48,12 @@ model Student {
 }
 
 model StudentsTasks {
-  id           String  @id @default(uuid())
+  id           String   @id @default(uuid())
   title        String
-  student      Student @relation(fields: [studentEmail], references: [email])
+  student      Student  @relation(fields: [studentEmail], references: [email])
   studentEmail String
+  created_at   DateTime @default(now())
+  completed    String
 }
 
 model StudentSchedules {

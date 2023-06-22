@@ -25,8 +25,14 @@ import { getClerkUsers, createClerkUser } from './auth/createClerkUser'
 
 import { sendData } from './controllers/sendData'
 import { getUser } from './auth/getUser'
-import { createStudentTaskHandler } from './controllers/students/createStudentTaskHandler'
-import { getStudentTaskHandler } from './controllers/students/getStudentTasksHandler'
+import {
+  completeTaskHandler,
+  createStudentTaskHandler,
+} from './controllers/students/createStudentTaskHandler'
+import {
+  getStudentTaskHandler,
+  getTaskNumberHandler,
+} from './controllers/students/getStudentTasksHandler'
 import {
   createScheduleHandler,
   getScheduleHandler,
@@ -76,6 +82,9 @@ const routes = (app: Express) => {
 
   app.post('/api/mentee/create-task', createStudentTaskHandler)
   app.get('/api/mentee/get-tasks', getStudentTaskHandler)
+  app.get('/api/mentee/get-task-number', getTaskNumberHandler)
+  app.post('/api/mentee/complete-task', completeTaskHandler)
+
   app.post('/api/mentee/create-schedule', createScheduleHandler)
   app.get('/api/mentee/get-schedules', getScheduleHandler)
 }
