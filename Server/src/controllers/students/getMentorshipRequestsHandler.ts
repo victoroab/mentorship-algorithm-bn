@@ -21,7 +21,6 @@ export const getStudentRequestHandler = async (req: Request, res: Response) => {
 export const getMentorRequestHandler = async (req: Request, res: Response) => {
   try {
     const mentorEmail: string = req.body?.mentorEmail
-    // res.send(mentorEmail)
     const mentorshipRequests = await getMentorRequests(mentorEmail)
     res.json(mentorshipRequests)
   } catch (e) {

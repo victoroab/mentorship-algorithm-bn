@@ -20,10 +20,6 @@
 - [x] Health check
 - [x] Define naming convention for api routes for CRUD operations and auth
 
-## Services
-
-- [] Set up file upload to storage bucket
-
 # Business Logic
 
 ## Mentor
@@ -43,7 +39,7 @@
 ## System
 
 - [] The system shall send email notifications to mentors and mentees concerning meetings
-- [] The system shall allow mentees to rate mentors after mentorship period
+<!-- - [] The system shall allow mentees to rate mentors after mentorship period -->
 - [] The system shall automatically remove mentees from mentors after mentorship period
 - [x] The system shall provide a student with compatible mentors based on the student's choice
 
@@ -58,11 +54,11 @@
 
 ## Features
 
-- [] Real time messaging
-- [] Task tracker
-- [] Image and file uploads
-- [] Push notifications
-- [x] Matching System
+- [x] Real time messaging
+- [x] Task tracker
+- [x] Image and file uploads
+<!-- - [] Push notifications -->
+- [] Matching System
 
 ## To-do
 
@@ -78,8 +74,52 @@
 
 - [x] Create endpoint for matching system
 
-- [] Create DELETE route to delete users and relations
+<!-- - [] Create DELETE route to delete users and relations -->
 
 - [] Create automated matching algorithm
 
-- [] Authentication
+- [x] Authentication
+
+## Algorithm
+
+### Student Preferences
+
+1. Expertise in Field (Years in number)
+2. Communication Style ()
+3. Communication Channels ()
+4. Degrees Obtained
+5. Marital Status
+
+### Additional Mentor data
+
+1. Preferred communication style
+2. Preferred communication channel
+3. Degrees Obtained
+4. Marital Status
+
+## Personality Traits
+
+1. Aggreableness
+2. Empathy
+3. Communication
+4. Patience
+5. Open-mindedness
+6. Adaptability
+7. Leadership
+8. Accountability
+9. Problem-solving
+10. Resilience
+11. Trustworthiness
+
+## Directly Match
+
+1. Skills
+2. Hobbies
+3. Availability
+4. Areas of Interest
+
+## Arrangement and Weighting
+
+1. Personality Match -> 1.5
+2. Direct Match -> 1
+3. Preferences Match -> 2

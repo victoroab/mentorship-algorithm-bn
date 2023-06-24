@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import log from '../config/logger/logger'
 import { prisma } from '../config/prismaClient/prismaClient'
 
 export const getUser = async (req: Request, res: Response) => {
@@ -20,6 +21,7 @@ export const getUser = async (req: Request, res: Response) => {
     } else if (isMentor) {
       res.json({ ...isMentor, type: 'mentor' })
     }
+    // res.send(email)
   } catch (e) {
     res.send(e)
   }

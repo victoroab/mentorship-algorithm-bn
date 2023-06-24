@@ -37,6 +37,11 @@ import {
   createScheduleHandler,
   getScheduleHandler,
 } from './controllers/students/studentScheduleHandler'
+import {
+  directMatch,
+  personalityMatch,
+  test1,
+} from './services/algorithm/compareMatch'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {
@@ -87,6 +92,8 @@ const routes = (app: Express) => {
 
   app.post('/api/mentee/create-schedule', createScheduleHandler)
   app.get('/api/mentee/get-schedules', getScheduleHandler)
+
+  app.get('/api/test-algorithm', test1)
 }
 
 export default routes
