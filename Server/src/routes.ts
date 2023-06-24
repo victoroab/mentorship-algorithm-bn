@@ -21,8 +21,6 @@ import {
 } from './controllers/students/getMentorshipRequestsHandler'
 import { deleteMentorshipRequestHandler } from './controllers/students/deleteMentorshipRequestHandler'
 
-import { getClerkUsers, createClerkUser } from './auth/createClerkUser'
-
 import { sendData } from './controllers/sendData'
 import { getUser } from './auth/getUser'
 import {
@@ -37,11 +35,7 @@ import {
   createScheduleHandler,
   getScheduleHandler,
 } from './controllers/students/studentScheduleHandler'
-import {
-  directMatch,
-  personalityMatch,
-  test1,
-} from './services/algorithm/compareMatch'
+import { test1 } from './services/algorithm/compareMatch'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {

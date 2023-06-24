@@ -19,32 +19,47 @@ model Messages {
 }
 
 model Student {
-  id                 String               @id @default(uuid())
-  firstName          String
-  middleName         String
-  lastName           String
-  email              String               @unique
-  phoneNumber        String?
-  age                Int
-  gender             String
-  ethnicity          String
-  program            String?
-  matricNo           String
-  class              String?
-  mentor             Mentor?              @relation(fields: [mentorId], references: [id])
-  mentorId           String?
-  picture            String?
-  AreasOfInterest    AreasOfInterest      @relation(fields: [areasOfIntrestId], references: [id], onDelete: Cascade)
-  areasOfIntrestId   String               @unique
-  Skills             StudentSkills        @relation(fields: [skillsId], references: [id], onDelete: Cascade)
-  skillsId           String               @unique
-  Hobbies            StudentHobbies       @relation(fields: [hobbiesId], references: [id], onDelete: Cascade)
-  hobbiesId          String               @unique
-  Availability       StudentAvailability  @relation(fields: [availabilityId], references: [id], onDelete: Cascade)
-  availabilityId     String               @unique
-  mentorshipRequests MentorshipRequests[]
-  tasks              StudentsTasks[]
-  schedules          StudentSchedules[]
+  id                   String               @id @default(uuid())
+  firstName            String
+  middleName           String
+  lastName             String
+  email                String               @unique
+  phoneNumber          String?
+  age                  Int
+  gender               String
+  ethnicity            String
+  program              String?
+  matricNo             String
+  class                String?
+  communicationStyle   String?
+  degreesObtained      String?
+  communicationChannel String?
+  expertiseInField     String?
+  maritalStatus        String?
+  empathy              Float
+  communication        Float
+  patience             Float
+  openMindedness       Float
+  adaptability         Float
+  leadership           Float
+  accountability       Float
+  problemSolving       Float
+  resilience           Float
+  trustworthiness      Float
+  mentor               Mentor?              @relation(fields: [mentorId], references: [id])
+  mentorId             String?
+  picture              String?
+  AreasOfInterest      AreasOfInterest      @relation(fields: [areasOfIntrestId], references: [id], onDelete: Cascade)
+  areasOfIntrestId     String               @unique
+  Skills               StudentSkills        @relation(fields: [skillsId], references: [id], onDelete: Cascade)
+  skillsId             String               @unique
+  Hobbies              StudentHobbies       @relation(fields: [hobbiesId], references: [id], onDelete: Cascade)
+  hobbiesId            String               @unique
+  Availability         StudentAvailability  @relation(fields: [availabilityId], references: [id], onDelete: Cascade)
+  availabilityId       String               @unique
+  mentorshipRequests   MentorshipRequests[]
+  tasks                StudentsTasks[]
+  schedules            StudentSchedules[]
 }
 
 model StudentsTasks {
@@ -89,30 +104,45 @@ model StudentAvailability {
 }
 
 model Mentor {
-  id                 String               @id @default(uuid())
-  firstName          String
-  middleName         String
-  lastName           String
-  email              String               @unique
-  phoneNumber        String?
-  age                Int
-  gender             String
-  ethnicity          String
-  department         String
-  rank               String
-  staffNo            String
-  picture            String?
-  cv                 String?
-  Mentee             Student[]
-  Preferences        MentorPreferences    @relation(fields: [preferenceId], references: [id])
-  preferenceId       String               @unique
-  Skills             MentorSkills         @relation(fields: [skillsId], references: [id])
-  skillsId           String               @unique
-  Hobbies            MentorHobbies        @relation(fields: [hobbiesId], references: [id])
-  hobbiesId          String               @unique
-  Availability       MentorAvailability   @relation(fields: [availabilityId], references: [id])
-  availabilityId     String               @unique
-  mentorshipRequests MentorshipRequests[]
+  id                   String               @id @default(uuid())
+  firstName            String
+  middleName           String
+  lastName             String
+  email                String               @unique
+  phoneNumber          String?
+  age                  Int
+  gender               String
+  ethnicity            String
+  department           String
+  rank                 String
+  staffNo              String
+  picture              String?
+  cv                   String?
+  communicationStyle   String
+  degreesObtained      String
+  communicationChannel String
+  expertiseInField     String
+  maritalStatus        String
+  empathy              Float
+  communication        Float
+  patience             Float
+  openMindedness       Float
+  adaptability         Float
+  leadership           Float
+  accountability       Float
+  problemSolving       Float
+  resilience           Float
+  trustworthiness      Float
+  Mentee               Student[]
+  Preferences          MentorPreferences    @relation(fields: [preferenceId], references: [id])
+  preferenceId         String               @unique
+  Skills               MentorSkills         @relation(fields: [skillsId], references: [id])
+  skillsId             String               @unique
+  Hobbies              MentorHobbies        @relation(fields: [hobbiesId], references: [id])
+  hobbiesId            String               @unique
+  Availability         MentorAvailability   @relation(fields: [availabilityId], references: [id])
+  availabilityId       String               @unique
+  mentorshipRequests   MentorshipRequests[]
 }
 
 model MentorPreferences {

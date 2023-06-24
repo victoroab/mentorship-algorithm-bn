@@ -56,6 +56,22 @@ export const createStudentSchema = z.object({
         })
       )
       .nonempty(),
+
+    empathy: z.number(),
+    communication: z.number(),
+    patience: z.number(),
+    openMindedness: z.number(),
+    adaptability: z.number(),
+    leadership: z.number(),
+    accountability: z.number(),
+    problemSolving: z.number(),
+    resilience: z.number(),
+    trustworthiness: z.number(),
+    communicationStyle: z.string(),
+    degreesObtained: z.string(),
+    communicationChannel: z.string(),
+    expertiseInField: z.string(),
+    maritalStatus: z.string(),
   }),
 })
 

@@ -17,7 +17,6 @@ export const createStudentService = async (
     const student = await prisma.student.create({
       data: {
         age: reqBody.age,
-        // class: reqBody.class,
         email: reqBody.email,
         ethnicity: reqBody.ethnicity,
         firstName: reqBody.firstName,
@@ -29,6 +28,21 @@ export const createStudentService = async (
         Availability: { create: { days: `${[...reqBody.availability]}` } },
         Hobbies: { create: { hobbies: `${[...reqBody.hobbies]}` } },
         Skills: { create: { skills: `${[...reqBody.skills]}` } },
+        accountability: reqBody.accountability,
+        adaptability: reqBody.adaptability,
+        communication: reqBody.communication,
+        empathy: reqBody.empathy,
+        leadership: reqBody.leadership,
+        openMindedness: reqBody.openMindedness,
+        patience: reqBody.patience,
+        problemSolving: reqBody.problemSolving,
+        resilience: reqBody.resilience,
+        trustworthiness: reqBody.trustworthiness,
+        communicationChannel: reqBody.communicationChannel,
+        communicationStyle: reqBody.communicationStyle,
+        degreesObtained: reqBody.degreesObtained,
+        expertiseInField: reqBody.expertiseInField,
+        maritalStatus: reqBody.maritalStatus,
       },
     })
     return student.id
