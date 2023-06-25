@@ -28,6 +28,43 @@ export type MatchData = {
   }
 }
 
+export type MatchDataMentor = {
+  id: string
+  email: string
+  firstName: string
+  middleName: string
+  lastName: string
+  staffNo: string
+  rank: string
+  department: string
+  hobbies: string[]
+  skills: string[]
+  directData: {
+    availability: string[]
+    skills: string[]
+    hobbies: string[]
+  }
+  preferencesData: {
+    communicationStyle: string
+    degreesObtained: string
+    communicationChannel: string
+    expertiseInField: string
+    maritalStatus: string
+  }
+  personalityData: {
+    empathy: number
+    communication: number
+    patience: number
+    openMindedness: number
+    adaptability: number
+    leadership: number
+    accountability: number
+    problemSolving: number
+    resilience: number
+    trustworthiness: number
+  }
+}
+
 export type MentorData = MatchData[]
 
 export type PersonalityTraits = {

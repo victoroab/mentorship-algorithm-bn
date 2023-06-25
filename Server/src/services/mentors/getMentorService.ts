@@ -8,7 +8,7 @@ export const getMentorsService = async (user: string) => {
       select: { mentor: { select: { email: true } } },
     })
 
-    if (!hasMentor) {
+    if (!hasMentor?.mentor) {
       const mentors = await prisma.mentor.findMany({
         select: {
           id: true,

@@ -3,6 +3,7 @@ import {
   DirectData,
   PersonalityTraits,
   PreferencesData,
+  MatchDataMentor,
 } from './types'
 
 export function personalityMatch(
@@ -87,7 +88,7 @@ export const findMatch = ({
   mentors,
 }: {
   student: MatchData
-  mentors: MatchData[]
+  mentors: MatchDataMentor[]
 }) => {
   let matches = []
   for (const m of mentors) {
@@ -117,9 +118,17 @@ export const findMatch = ({
     )
 
     matches.push({
-      name: m.name,
+      id: m.id,
+      firstName: m.firstName,
+      middleName: m.middleName,
+      lastName: m.lastName,
+      department: m.department,
+      staffNo: m.staffNo,
+      rank: m.rank,
+      Hobbies: { hobbies: m.hobbies.toString() },
+      Skills: { skills: m.skills.toString() },
       email: m.email,
-      similarityScore: totalScore,
+      similarityScore: totalScore * 100,
     })
   }
   return matches

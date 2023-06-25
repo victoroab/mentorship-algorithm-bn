@@ -15,6 +15,8 @@ export const getMentorshipRequests = async (studentEmail: string) => {
                 firstName: true,
                 email: true,
                 lastName: true,
+                department: true,
+                staffNo: true,
               },
             },
           },

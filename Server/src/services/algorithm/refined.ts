@@ -1,5 +1,5 @@
 import { prisma } from '../../config/prismaClient/prismaClient'
-import { MatchData } from './types'
+import { MatchData, MatchDataMentor } from './types'
 import { findMatch } from './algorithms'
 
 export const getRecommendedMentors = async (studentEmail: string) => {
@@ -35,6 +35,12 @@ export const getRecommendedMentors = async (studentEmail: string) => {
       select: {
         id: true,
         firstName: true,
+        lastName: true,
+        middleName: true,
+        gender: true,
+        staffNo: true,
+        rank: true,
+        department: true,
         email: true,
         Availability: true,
         Skills: true,
@@ -103,11 +109,18 @@ export const getRecommendedMentors = async (studentEmail: string) => {
         },
       }
 
-      const mentorsData: MatchData[] = transaction[1].map((mentor) => {
+      const mentorsData: MatchDataMentor[] = transaction[1].map((mentor) => {
         return {
           id: mentor.id,
-          name: mentor.firstName,
           email: mentor.email,
+          firstName: mentor.firstName,
+          middleName: mentor.middleName,
+          lastName: mentor.lastName,
+          staffNo: mentor.staffNo,
+          rank: mentor.rank,
+          department: mentor.department,
+          hobbies: mentor.Hobbies.hobbies.split(','),
+          skills: mentor.Skills.skills.split(','),
           directData: {
             availability: mentor.Availability.days.split(','),
             skills: mentor.Skills.skills.split(','),
