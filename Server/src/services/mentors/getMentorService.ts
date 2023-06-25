@@ -27,7 +27,7 @@ export const getMentorsService = async (user: string) => {
       })
       return mentors
     } else {
-      return 'You have a mentor'
+      return null
     }
   } catch (e) {
     log.error(e)
