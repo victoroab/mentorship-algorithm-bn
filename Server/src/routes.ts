@@ -36,6 +36,14 @@ import {
   getScheduleHandler,
 } from './controllers/students/studentScheduleHandler'
 import { test1 } from './services/algorithm/compareMatch'
+import {
+  createMentorSchedule,
+  getMentorSchedule,
+} from './services/students/mentorScheduleService'
+import {
+  getMentorScheduleHandler,
+  mentorScheduleHandler,
+} from './controllers/mentors/mentorScheduleHandler'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {
@@ -86,6 +94,8 @@ const routes = (app: Express) => {
 
   app.post('/api/mentee/create-schedule', createScheduleHandler)
   app.get('/api/mentee/get-schedules', getScheduleHandler)
+  app.post('/api/mentor/create-schedule', mentorScheduleHandler)
+  app.get('/api/mentor/get-schedule', getMentorScheduleHandler)
 
   app.get('/api/test-algorithm', test1)
 }

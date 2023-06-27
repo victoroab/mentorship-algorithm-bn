@@ -143,6 +143,15 @@ model Mentor {
   Availability         MentorAvailability   @relation(fields: [availabilityId], references: [id])
   availabilityId       String               @unique
   mentorshipRequests   MentorshipRequests[]
+  schedules            MentorSchedules[]
+}
+
+model MentorSchedules {
+  id          String @id @default(uuid())
+  title       String
+  mentor      Mentor @relation(fields: [mentorEmail], references: [email])
+  mentorEmail String
+  date        String
 }
 
 model MentorPreferences {
