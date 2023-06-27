@@ -63,7 +63,13 @@ export const getStudentService = async (mentorEmail: string) => {
     where: { email: mentorEmail },
     select: {
       Mentee: {
-        select: { id: true, firstName: true, lastName: true, email: true },
+        select: {
+          id: true,
+          firstName: true,
+          lastName: true,
+          email: true,
+          matricNo: true,
+        },
       },
     },
   })
@@ -78,6 +84,7 @@ export const getStudentByIDService = async (studentId: string) => {
       AreasOfInterest: { select: { aoi: true } },
       Availability: { select: { days: true } },
       Skills: { select: { skills: true } },
+      tasks: true,
     },
   })
   return student

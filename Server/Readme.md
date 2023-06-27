@@ -39,8 +39,8 @@
 ## System
 
 - [] The system shall send email notifications to mentors and mentees concerning meetings
-<!-- - [] The system shall allow mentees to rate mentors after mentorship period -->
-- [] The system shall automatically remove mentees from mentors after mentorship period
+  <!-- - [] The system shall allow mentees to rate mentors after mentorship period -->
+  <!-- - [] The system shall automatically remove mentees from mentors after mentorship period -->
 - [x] The system shall provide a student with compatible mentors based on the student's choice
 
 ## Constraints
@@ -76,9 +76,13 @@
 
 <!-- - [] Create DELETE route to delete users and relations -->
 
-- [] Create automated matching algorithm
+- [x] Create automated matching algorithm
 
 - [x] Authentication
+
+- [] Filter strings to lowercase
+- [] Sign in on prod and complete tasks
+- [] Work with to-do's from client side
 
 ## Algorithm
 
