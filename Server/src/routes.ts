@@ -44,6 +44,15 @@ import {
   getMentorScheduleHandler,
   mentorScheduleHandler,
 } from './controllers/mentors/mentorScheduleHandler'
+import { createMentorTask } from './services/mentors/createMentorTask'
+import {
+  getMentorTaskHandler,
+  getMentorTaskNumberHandler,
+} from './controllers/mentors/getMentorTaskHandler'
+import {
+  completeMentorTaskHandler,
+  createMentorTaskHandler,
+} from './controllers/mentors/createMentorTaskHandler'
 
 const routes = (app: Express) => {
   app.get('/health-check', (req: Request, res: Response) => {
@@ -92,8 +101,14 @@ const routes = (app: Express) => {
   app.get('/api/mentee/get-task-number', getTaskNumberHandler)
   app.post('/api/mentee/complete-task', completeTaskHandler)
 
+  app.post('/api/mentor/create-task', createMentorTaskHandler)
+  app.get('/api/mentor/get-tasks', getMentorTaskHandler)
+  app.get('/api/mentor/get-task-number', getMentorTaskNumberHandler)
+  app.post('/api/mentor/complete-task', completeMentorTaskHandler)
+
   app.post('/api/mentee/create-schedule', createScheduleHandler)
   app.get('/api/mentee/get-schedules', getScheduleHandler)
+
   app.post('/api/mentor/create-schedule', mentorScheduleHandler)
   app.get('/api/mentor/get-schedule', getMentorScheduleHandler)
 

@@ -144,6 +144,16 @@ model Mentor {
   availabilityId       String               @unique
   mentorshipRequests   MentorshipRequests[]
   schedules            MentorSchedules[]
+  tasks                MentorTasks[]
+}
+
+model MentorTasks {
+  id          String   @id @default(uuid())
+  title       String
+  mentor      Mentor   @relation(fields: [mentorEmail], references: [email])
+  mentorEmail String
+  created_at  DateTime @default(now())
+  completed   String
 }
 
 model MentorSchedules {
