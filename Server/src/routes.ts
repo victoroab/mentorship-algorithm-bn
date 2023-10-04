@@ -37,14 +37,9 @@ import {
 } from './controllers/students/studentScheduleHandler'
 import { test1 } from './services/algorithm/compareMatch'
 import {
-  createMentorSchedule,
-  getMentorSchedule,
-} from './services/students/mentorScheduleService'
-import {
   getMentorScheduleHandler,
   mentorScheduleHandler,
 } from './controllers/mentors/mentorScheduleHandler'
-import { createMentorTask } from './services/mentors/createMentorTask'
 import {
   getMentorTaskHandler,
   getMentorTaskNumberHandler,

@@ -18,16 +18,6 @@ export const requestMentorshipService = async ({
       return 'You have already sent a request to this mentor'
     }
 
-    // const isAccepted = await prisma.student.findFirst({
-    //   where: { mentorId: mentorId },
-    // })
-
-    // // return isAccepted
-
-    // if (isAccepted !== null) {
-    //   return 'Already your mentor'
-    // }
-
     const requestCount = await prisma.student.findMany({
       where: {
         email: studentEmail,
